@@ -38,3 +38,5 @@ public class TimelineActivity extends AppCompatActivity {
         });
     }
 }
+
+//Put all together in a adapter and put it in the recycler view
