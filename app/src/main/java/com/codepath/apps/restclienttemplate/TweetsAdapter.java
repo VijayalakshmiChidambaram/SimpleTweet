@@ -17,7 +17,7 @@ import com.codepath.apps.restclienttemplate.models.Tweet;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-
+//Put all together in a adapter and put it in the recycler view
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder>{
 
     //Define member Variables
@@ -53,6 +53,19 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         return tweets.size();
     }
 
+    // Pull Refresh
+    // Clean all elements of the recycler
+    public void clear() {
+        tweets.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<Tweet> TweetList) {
+        tweets.addAll(TweetList);
+        notifyDataSetChanged();
+    }
+
 
     //Define a ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -72,13 +85,10 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
-            RequestOptions requestOptions = new RequestOptions();
             //Glide is an Image Loader Library for Android developed
             Glide.with(context)
-                    .setDefaultRequestOptions(requestOptions)
                     .load(tweet.user.profileImageUrl)
                     .into(ivProfileImage);
-
         }
     }
 }
