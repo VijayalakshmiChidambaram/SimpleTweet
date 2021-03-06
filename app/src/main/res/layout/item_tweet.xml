@@ -7,13 +7,15 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
     android:layout_marginStart="0dp"
-    android:layout_marginTop="0dp">
+    android:layout_marginTop="0dp"
+    >
 
     <ImageView
         android:id="@+id/ivProfileImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/circle_vector"
+        tools:srcCompat="@drawable/circle_vector" />
 
     <TextView
         android:id="@+id/tvScreenName"
@@ -23,7 +25,9 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivProfileImage"
+        android:textColor="@android:color/black"
         android:textSize="18sp"
+        android:textStyle="bold"
         tools:text="Tweet1" />
 
     <TextView
@@ -35,5 +39,8 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="2dp"
         android:layout_toEndOf="@+id/ivProfileImage"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:textColor="@android:color/black"
         tools:text="This is my Tweet !!" />
 </RelativeLayout>
