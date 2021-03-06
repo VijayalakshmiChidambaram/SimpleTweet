@@ -10,6 +10,7 @@ import java.util.List;
 public class Tweet {
     public String body;
     public String createdAt;
+    public long id; //id of the tweet
     public User user;
     //JSON onject convert into Java
     public static Tweet fromJSON(JSONObject jsonObject) throws JSONException {
@@ -17,6 +18,7 @@ public class Tweet {
         // Build the tweet
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
+        tweet.id = jsonObject.getLong("id");
         //Twitter user should be Java user model, but what we get below is JSON Object, So we create static method User which takes JSON and will return user model
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
         return tweet;
