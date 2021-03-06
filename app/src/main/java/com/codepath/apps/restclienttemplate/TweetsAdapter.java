@@ -52,9 +52,6 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     }
 
 
-
-
-
     //Define a ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder{
 
