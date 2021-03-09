@@ -28,7 +28,7 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:text="Tweet1" />
+        tools:text="TweetOne1" />
 
     <TextView
         android:id="@+id/tvBody"

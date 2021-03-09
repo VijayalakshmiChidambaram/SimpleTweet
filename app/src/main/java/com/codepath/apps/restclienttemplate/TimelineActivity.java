@@ -7,6 +7,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
@@ -74,6 +77,22 @@ public class TimelineActivity extends AppCompatActivity {
 
         //Populate Timeline feeds
         populateHomeTimeLine();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //inflate the menu. This adds items to the action bar if it is present
+        //This takes two parameters - resource file(xml), menu item
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.compose)
+            //Compose item is selected
+            Toast.makeText(this,"Compose!", Toast.LENGTH_SHORT).show();
+            return true;
     }
 
     private void loadMoreData() {
