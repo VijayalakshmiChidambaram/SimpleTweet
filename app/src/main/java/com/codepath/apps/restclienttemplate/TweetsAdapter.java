@@ -89,6 +89,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             //Glide is an Image Loader Library for Android developed
             Glide.with(context)
                     .load(tweet.user.profileImageUrl)
+                    .circleCrop()
                     .into(ivProfileImage);
 
         }

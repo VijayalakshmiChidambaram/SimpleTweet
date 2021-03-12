@@ -24,7 +24,8 @@ public class LoginActivity extends OAuthLoginActionBarActivity<TwitterClient> {
 		sampleModel.setName("CodePath");
 
 		sampleModelDao = ((TwitterApp) getApplicationContext()).getMyDatabase().sampleModelDao();
-
+		//Async Task - The task like insert all data cannot be done on UI or Main thread, as it will cause issues with memory and app crash too.
+		//So these operations will be done in background thread
 		AsyncTask.execute(new Runnable() {
 			@Override
 			public void run() {

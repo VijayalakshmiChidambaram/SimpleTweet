@@ -8,6 +8,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //To achieve persistence (View data in offline), we are storing the data in SQLLite DB and fetching to user in offline mode
 // To use table to store data -entity
 
@@ -36,5 +39,13 @@ public class User {
         user.screenName = jsonObject.getString("screen_name");
         user.profileImageUrl = jsonObject.getString("profile_image_url");
         return user;
+    }
+
+    public static List<User> fromJsonTweetArray(List<Tweet> tweetsFromNetwork) {
+        List<User> users = new ArrayList<>();
+        for (int i=0; i<tweetsFromNetwork.size(); i++) {
+            users.add(tweetsFromNetwork.get(i).user);
+        }
+        return users;
     }
 }
