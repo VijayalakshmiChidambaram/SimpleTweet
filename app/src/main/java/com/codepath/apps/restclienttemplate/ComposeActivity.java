@@ -3,11 +3,17 @@ package com.codepath.apps.restclienttemplate;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -27,6 +33,8 @@ public class ComposeActivity extends AppCompatActivity {
 
     EditText etCompose;
     Button btnTweet;
+    TextView count;
+    private static final int TWEET_MAX_LENGTH = 280;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,35 @@ public class ComposeActivity extends AppCompatActivity {
 
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
+        count = findViewById(R.id.count);
+
+        etCompose.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int counts) {
+                // Fires right as the text is being changed (even supplies the range of text)
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int counts,
+                                          int after) {
+                // Fires right before text is changing
+                int textLength = s.length();
+                String lengthAsStr = String.valueOf(textLength);
+                count.setText(lengthAsStr+" characters of "+String.valueOf(TWEET_MAX_LENGTH));
+                if (textLength>TWEET_MAX_LENGTH){
+                    count.setTextColor(Color.RED);
+                }
+                else{
+                    count.setTextColor(Color.GREEN);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Fires right after the text has changed
+
+            }
+        });
 
         //Set up an on Click Listener
         btnTweet.setOnClickListener(new View.OnClickListener() {
